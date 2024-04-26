@@ -13,19 +13,9 @@ import 'package:dub/src/model/add_domain_request.dart';
 import 'package:dub/src/model/delete_domain200_response.dart';
 import 'package:dub/src/model/domain_schema.dart';
 import 'package:dub/src/model/edit_domain_request.dart';
-import 'package:dub/src/model/get_links400_response.dart';
-import 'package:dub/src/model/get_links401_response.dart';
-import 'package:dub/src/model/get_links403_response.dart';
-import 'package:dub/src/model/get_links404_response.dart';
-import 'package:dub/src/model/get_links409_response.dart';
-import 'package:dub/src/model/get_links410_response.dart';
-import 'package:dub/src/model/get_links422_response.dart';
-import 'package:dub/src/model/get_links429_response.dart';
-import 'package:dub/src/model/get_links500_response.dart';
 import 'package:dub/src/model/transfer_domain_request.dart';
 
 class DomainsApi {
-
   final Dio _dio;
 
   const DomainsApi(this._dio);
@@ -36,7 +26,7 @@ class DomainsApi {
   /// Parameters:
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [addDomainRequest] 
+  /// * [addDomainRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -46,7 +36,7 @@ class DomainsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DomainSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DomainSchema>> addDomain({ 
+  Future<Response<DomainSchema>> addDomain({
     required String workspaceId,
     String? projectSlug,
     AddDomainRequest? addDomainRequest,
@@ -85,10 +75,10 @@ class DomainsApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(addDomainRequest);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(addDomainRequest);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -112,8 +102,11 @@ _bodyData=jsonEncode(addDomainRequest);
     DomainSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -152,7 +145,7 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
   ///
   /// Returns a [Future] containing a [Response] with a [DeleteDomain200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeleteDomain200Response>> deleteDomain({ 
+  Future<Response<DeleteDomain200Response>> deleteDomain({
     required String slug,
     required String workspaceId,
     String? projectSlug,
@@ -163,7 +156,8 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/domains/{slug}'.replaceAll('{' r'slug' '}', slug.toString());
+    final _path =
+        r'/domains/{slug}'.replaceAll('{' r'slug' '}', slug.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -199,8 +193,12 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
     DeleteDomain200Response? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DeleteDomain200Response, DeleteDomain200Response>(rawData, 'DeleteDomain200Response', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DeleteDomain200Response, DeleteDomain200Response>(
+              rawData, 'DeleteDomain200Response',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -230,7 +228,7 @@ _responseData = rawData == null ? null : deserialize<DeleteDomain200Response, De
   /// * [slug] - The domain name.
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [editDomainRequest] 
+  /// * [editDomainRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -240,7 +238,7 @@ _responseData = rawData == null ? null : deserialize<DeleteDomain200Response, De
   ///
   /// Returns a [Future] containing a [Response] with a [DomainSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DomainSchema>> editDomain({ 
+  Future<Response<DomainSchema>> editDomain({
     required String slug,
     required String workspaceId,
     String? projectSlug,
@@ -252,7 +250,8 @@ _responseData = rawData == null ? null : deserialize<DeleteDomain200Response, De
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/domains/{slug}'.replaceAll('{' r'slug' '}', slug.toString());
+    final _path =
+        r'/domains/{slug}'.replaceAll('{' r'slug' '}', slug.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -280,10 +279,10 @@ _responseData = rawData == null ? null : deserialize<DeleteDomain200Response, De
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(editDomainRequest);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(editDomainRequest);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -307,8 +306,11 @@ _bodyData=jsonEncode(editDomainRequest);
     DomainSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -346,7 +348,7 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
   ///
   /// Returns a [Future] containing a [Response] with a [List<DomainSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<DomainSchema>>> listDomains({ 
+  Future<Response<List<DomainSchema>>> listDomains({
     required String workspaceId,
     String? projectSlug,
     CancelToken? cancelToken,
@@ -392,8 +394,12 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
     List<DomainSchema>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<DomainSchema>, DomainSchema>(rawData, 'List<DomainSchema>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<DomainSchema>, DomainSchema>(
+              rawData, 'List<DomainSchema>',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -432,7 +438,7 @@ _responseData = rawData == null ? null : deserialize<List<DomainSchema>, DomainS
   ///
   /// Returns a [Future] containing a [Response] with a [DomainSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DomainSchema>> setPrimaryDomain({ 
+  Future<Response<DomainSchema>> setPrimaryDomain({
     required String slug,
     required String workspaceId,
     String? projectSlug,
@@ -443,7 +449,8 @@ _responseData = rawData == null ? null : deserialize<List<DomainSchema>, DomainS
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/domains/{slug}/primary'.replaceAll('{' r'slug' '}', slug.toString());
+    final _path =
+        r'/domains/{slug}/primary'.replaceAll('{' r'slug' '}', slug.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -479,8 +486,11 @@ _responseData = rawData == null ? null : deserialize<List<DomainSchema>, DomainS
     DomainSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -510,7 +520,7 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
   /// * [slug] - The domain name.
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [transferDomainRequest] 
+  /// * [transferDomainRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -520,7 +530,7 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
   ///
   /// Returns a [Future] containing a [Response] with a [DomainSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DomainSchema>> transferDomain({ 
+  Future<Response<DomainSchema>> transferDomain({
     required String slug,
     required String workspaceId,
     String? projectSlug,
@@ -532,7 +542,8 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/domains/{slug}/transfer'.replaceAll('{' r'slug' '}', slug.toString());
+    final _path = r'/domains/{slug}/transfer'
+        .replaceAll('{' r'slug' '}', slug.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -560,10 +571,10 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(transferDomainRequest);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(transferDomainRequest);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -587,8 +598,11 @@ _bodyData=jsonEncode(transferDomainRequest);
     DomainSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DomainSchema, DomainSchema>(rawData, 'DomainSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -610,5 +624,4 @@ _responseData = rawData == null ? null : deserialize<DomainSchema, DomainSchema>
       extra: _response.extra,
     );
   }
-
 }

@@ -10,19 +10,9 @@ import 'package:dub/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
 import 'package:dub/src/model/create_workspace_request.dart';
-import 'package:dub/src/model/get_links400_response.dart';
-import 'package:dub/src/model/get_links401_response.dart';
-import 'package:dub/src/model/get_links403_response.dart';
-import 'package:dub/src/model/get_links404_response.dart';
-import 'package:dub/src/model/get_links409_response.dart';
-import 'package:dub/src/model/get_links410_response.dart';
-import 'package:dub/src/model/get_links422_response.dart';
-import 'package:dub/src/model/get_links429_response.dart';
-import 'package:dub/src/model/get_links500_response.dart';
 import 'package:dub/src/model/workspace_schema.dart';
 
 class WorkspacesApi {
-
   final Dio _dio;
 
   const WorkspacesApi(this._dio);
@@ -31,7 +21,7 @@ class WorkspacesApi {
   /// Create a new workspace for the authenticated user.
   ///
   /// Parameters:
-  /// * [createWorkspaceRequest] 
+  /// * [createWorkspaceRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -41,7 +31,7 @@ class WorkspacesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WorkspaceSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WorkspaceSchema>> createWorkspace({ 
+  Future<Response<WorkspaceSchema>> createWorkspace({
     CreateWorkspaceRequest? createWorkspaceRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -73,10 +63,10 @@ class WorkspacesApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createWorkspaceRequest);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createWorkspaceRequest);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -98,8 +88,12 @@ _bodyData=jsonEncode(createWorkspaceRequest);
     WorkspaceSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<WorkspaceSchema, WorkspaceSchema>(rawData, 'WorkspaceSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<WorkspaceSchema, WorkspaceSchema>(
+              rawData, 'WorkspaceSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -136,7 +130,7 @@ _responseData = rawData == null ? null : deserialize<WorkspaceSchema, WorkspaceS
   ///
   /// Returns a [Future] containing a [Response] with a [WorkspaceSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WorkspaceSchema>> getWorkspace({ 
+  Future<Response<WorkspaceSchema>> getWorkspace({
     required String idOrSlug,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -145,7 +139,8 @@ _responseData = rawData == null ? null : deserialize<WorkspaceSchema, WorkspaceS
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/workspaces/{idOrSlug}'.replaceAll('{' r'idOrSlug' '}', idOrSlug.toString());
+    final _path = r'/workspaces/{idOrSlug}'
+        .replaceAll('{' r'idOrSlug' '}', idOrSlug.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -175,8 +170,12 @@ _responseData = rawData == null ? null : deserialize<WorkspaceSchema, WorkspaceS
     WorkspaceSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<WorkspaceSchema, WorkspaceSchema>(rawData, 'WorkspaceSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<WorkspaceSchema, WorkspaceSchema>(
+              rawData, 'WorkspaceSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -212,7 +211,7 @@ _responseData = rawData == null ? null : deserialize<WorkspaceSchema, WorkspaceS
   ///
   /// Returns a [Future] containing a [Response] with a [List<WorkspaceSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<WorkspaceSchema>>> getWorkspaces({ 
+  Future<Response<List<WorkspaceSchema>>> getWorkspaces({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -250,8 +249,12 @@ _responseData = rawData == null ? null : deserialize<WorkspaceSchema, WorkspaceS
     List<WorkspaceSchema>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<WorkspaceSchema>, WorkspaceSchema>(rawData, 'List<WorkspaceSchema>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<WorkspaceSchema>, WorkspaceSchema>(
+              rawData, 'List<WorkspaceSchema>',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -273,5 +276,4 @@ _responseData = rawData == null ? null : deserialize<List<WorkspaceSchema>, Work
       extra: _response.extra,
     );
   }
-
 }

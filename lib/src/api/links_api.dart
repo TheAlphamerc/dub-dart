@@ -12,19 +12,9 @@ import 'package:dio/dio.dart';
 import 'package:dub/src/model/create_link_request.dart';
 import 'package:dub/src/model/delete_link200_response.dart';
 import 'package:dub/src/model/edit_link_request.dart';
-import 'package:dub/src/model/get_links400_response.dart';
-import 'package:dub/src/model/get_links401_response.dart';
-import 'package:dub/src/model/get_links403_response.dart';
-import 'package:dub/src/model/get_links404_response.dart';
-import 'package:dub/src/model/get_links409_response.dart';
-import 'package:dub/src/model/get_links410_response.dart';
-import 'package:dub/src/model/get_links422_response.dart';
-import 'package:dub/src/model/get_links429_response.dart';
-import 'package:dub/src/model/get_links500_response.dart';
 import 'package:dub/src/model/link_schema.dart';
 
 class LinksApi {
-
   final Dio _dio;
 
   const LinksApi(this._dio);
@@ -35,7 +25,7 @@ class LinksApi {
   /// Parameters:
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [editLinkRequest] 
+  /// * [editLinkRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -45,7 +35,7 @@ class LinksApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<LinkSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<LinkSchema>>> bulkCreateLinks({ 
+  Future<Response<List<LinkSchema>>> bulkCreateLinks({
     required String workspaceId,
     String? projectSlug,
     List<EditLinkRequest>? editLinkRequest,
@@ -84,10 +74,10 @@ class LinksApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(editLinkRequest);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(editLinkRequest);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -111,8 +101,12 @@ _bodyData=jsonEncode(editLinkRequest);
     List<LinkSchema>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<LinkSchema>, LinkSchema>(rawData, 'List<LinkSchema>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<LinkSchema>, LinkSchema>(
+              rawData, 'List<LinkSchema>',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -141,7 +135,7 @@ _responseData = rawData == null ? null : deserialize<List<LinkSchema>, LinkSchem
   /// Parameters:
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [createLinkRequest] 
+  /// * [createLinkRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -151,7 +145,7 @@ _responseData = rawData == null ? null : deserialize<List<LinkSchema>, LinkSchem
   ///
   /// Returns a [Future] containing a [Response] with a [LinkSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LinkSchema>> createLink({ 
+  Future<Response<LinkSchema>> createLink({
     required String workspaceId,
     String? projectSlug,
     CreateLinkRequest? createLinkRequest,
@@ -190,10 +184,10 @@ _responseData = rawData == null ? null : deserialize<List<LinkSchema>, LinkSchem
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createLinkRequest);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createLinkRequest);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -217,8 +211,11 @@ _bodyData=jsonEncode(createLinkRequest);
     LinkSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(rawData, 'LinkSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LinkSchema, LinkSchema>(rawData, 'LinkSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -257,7 +254,7 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [DeleteLink200Response] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeleteLink200Response>> deleteLink({ 
+  Future<Response<DeleteLink200Response>> deleteLink({
     required String linkId,
     required String workspaceId,
     String? projectSlug,
@@ -268,7 +265,8 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/links/{linkId}'.replaceAll('{' r'linkId' '}', linkId.toString());
+    final _path =
+        r'/links/{linkId}'.replaceAll('{' r'linkId' '}', linkId.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -304,8 +302,12 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
     DeleteLink200Response? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<DeleteLink200Response, DeleteLink200Response>(rawData, 'DeleteLink200Response', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<DeleteLink200Response, DeleteLink200Response>(
+              rawData, 'DeleteLink200Response',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -335,7 +337,7 @@ _responseData = rawData == null ? null : deserialize<DeleteLink200Response, Dele
   /// * [linkId] - The id of the link to edit. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [editLinkRequest] 
+  /// * [editLinkRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -345,7 +347,7 @@ _responseData = rawData == null ? null : deserialize<DeleteLink200Response, Dele
   ///
   /// Returns a [Future] containing a [Response] with a [LinkSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LinkSchema>> editLink({ 
+  Future<Response<LinkSchema>> editLink({
     required String linkId,
     required String workspaceId,
     String? projectSlug,
@@ -357,7 +359,8 @@ _responseData = rawData == null ? null : deserialize<DeleteLink200Response, Dele
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/links/{linkId}'.replaceAll('{' r'linkId' '}', linkId.toString());
+    final _path =
+        r'/links/{linkId}'.replaceAll('{' r'linkId' '}', linkId.toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -385,10 +388,10 @@ _responseData = rawData == null ? null : deserialize<DeleteLink200Response, Dele
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(editLinkRequest);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(editLinkRequest);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -412,8 +415,11 @@ _bodyData=jsonEncode(editLinkRequest);
     LinkSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(rawData, 'LinkSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LinkSchema, LinkSchema>(rawData, 'LinkSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -441,7 +447,7 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
   ///
   /// Parameters:
   /// * [workspaceId] - The ID of the workspace.
-  /// * [domain] 
+  /// * [domain]
   /// * [key] - The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -453,7 +459,7 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [LinkSchema] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LinkSchema>> getLinkInfo({ 
+  Future<Response<LinkSchema>> getLinkInfo({
     required String workspaceId,
     required String domain,
     required String key,
@@ -503,8 +509,11 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
     LinkSchema? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(rawData, 'LinkSchema', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LinkSchema, LinkSchema>(rawData, 'LinkSchema',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -552,7 +561,7 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [List<LinkSchema>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<LinkSchema>>> getLinks({ 
+  Future<Response<List<LinkSchema>>> getLinks({
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -618,8 +627,12 @@ _responseData = rawData == null ? null : deserialize<LinkSchema, LinkSchema>(raw
     List<LinkSchema>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<LinkSchema>, LinkSchema>(rawData, 'List<LinkSchema>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<LinkSchema>, LinkSchema>(
+              rawData, 'List<LinkSchema>',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -666,7 +679,7 @@ _responseData = rawData == null ? null : deserialize<List<LinkSchema>, LinkSchem
   ///
   /// Returns a [Future] containing a [Response] with a [num] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<num>> getLinksCount({ 
+  Future<Response<num>> getLinksCount({
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -730,8 +743,10 @@ _responseData = rawData == null ? null : deserialize<List<LinkSchema>, LinkSchem
     num? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<num, num>(rawData, 'num', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<num, num>(rawData, 'num', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -753,5 +768,4 @@ _responseData = rawData == null ? null : deserialize<num, num>(rawData, 'num', g
       extra: _response.extra,
     );
   }
-
 }
