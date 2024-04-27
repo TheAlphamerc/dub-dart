@@ -1065,7 +1065,10 @@
             "name": "tagIds",
             "description": "The tag IDs to filter the links by.",
             "schema": {
-              "type": "string",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
               "description": "The tag IDs to filter the links by."
             }
           },
@@ -1074,7 +1077,10 @@
             "name": "tagNames",
             "description": "The unique name of the tags assigned to the short link (case insensitive).",
             "schema": {
-              "type": "string",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
               "description": "The unique name of the tags assigned to the short link (case insensitive)."
             }
           },
@@ -1245,7 +1251,10 @@
             "name": "tagIds",
             "description": "The tag IDs to filter the links by.",
             "schema": {
-              "type": "string",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
               "description": "The tag IDs to filter the links by."
             }
           },
@@ -1254,7 +1263,10 @@
             "name": "tagNames",
             "description": "The unique name of the tags assigned to the short link (case insensitive).",
             "schema": {
-              "type": "string",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
               "description": "The unique name of the tags assigned to the short link (case insensitive)."
             }
           },
@@ -1301,7 +1313,10 @@
             "name": "groupBy",
             "description": "The field to group the links by.",
             "schema": {
-              "type": "string",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
               "description": "The field to group the links by."
             }
           }
@@ -1553,7 +1568,10 @@
                     ]
                   },
                   "tagNames": {
-                    "type": "string",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
                     "description": "The unique name of the tags assigned to the short link (case insensitive)."
                   },
                   "comments": {
@@ -2611,7 +2629,10 @@
                       ]
                     },
                     "tagNames": {
-                      "type": "string",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
                       "description": "The unique name of the tags assigned to the short link (case insensitive)."
                     },
                     "comments": {

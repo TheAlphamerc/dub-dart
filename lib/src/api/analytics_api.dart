@@ -20,6 +20,7 @@ import 'package:dub/src/model/get_top_links200_response_inner.dart';
 import 'package:dub/src/model/get_top_urls200_response_inner.dart';
 
 class AnalyticsApi {
+
   final Dio _dio;
 
   const AnalyticsApi(this._dio);
@@ -54,8 +55,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetBrowserAnalytics200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetBrowserAnalytics200ResponseInner>>>
-      getBrowserAnalytics({
+  Future<Response<List<GetBrowserAnalytics200ResponseInner>>> getBrowserAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -131,13 +131,8 @@ class AnalyticsApi {
     List<GetBrowserAnalytics200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetBrowserAnalytics200ResponseInner>,
-                  GetBrowserAnalytics200ResponseInner>(
-              rawData, 'List<GetBrowserAnalytics200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetBrowserAnalytics200ResponseInner>, GetBrowserAnalytics200ResponseInner>(rawData, 'List<GetBrowserAnalytics200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -190,7 +185,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetCityAnalytics200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetCityAnalytics200ResponseInner>>> getCityAnalytics({
+  Future<Response<List<GetCityAnalytics200ResponseInner>>> getCityAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -266,13 +261,8 @@ class AnalyticsApi {
     List<GetCityAnalytics200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetCityAnalytics200ResponseInner>,
-                  GetCityAnalytics200ResponseInner>(
-              rawData, 'List<GetCityAnalytics200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetCityAnalytics200ResponseInner>, GetCityAnalytics200ResponseInner>(rawData, 'List<GetCityAnalytics200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -325,7 +315,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [num] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<num>> getClicksAnalytics({
+  Future<Response<num>> getClicksAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -401,10 +391,8 @@ class AnalyticsApi {
     num? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<num, num>(rawData, 'num', growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<num, num>(rawData, 'num', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -457,8 +445,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetCountryAnalytics200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetCountryAnalytics200ResponseInner>>>
-      getCountryAnalytics({
+  Future<Response<List<GetCountryAnalytics200ResponseInner>>> getCountryAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -534,13 +521,8 @@ class AnalyticsApi {
     List<GetCountryAnalytics200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetCountryAnalytics200ResponseInner>,
-                  GetCountryAnalytics200ResponseInner>(
-              rawData, 'List<GetCountryAnalytics200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetCountryAnalytics200ResponseInner>, GetCountryAnalytics200ResponseInner>(rawData, 'List<GetCountryAnalytics200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -593,8 +575,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetDeviceAnalytics200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetDeviceAnalytics200ResponseInner>>>
-      getDeviceAnalytics({
+  Future<Response<List<GetDeviceAnalytics200ResponseInner>>> getDeviceAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -670,13 +651,8 @@ class AnalyticsApi {
     List<GetDeviceAnalytics200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetDeviceAnalytics200ResponseInner>,
-                  GetDeviceAnalytics200ResponseInner>(
-              rawData, 'List<GetDeviceAnalytics200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetDeviceAnalytics200ResponseInner>, GetDeviceAnalytics200ResponseInner>(rawData, 'List<GetDeviceAnalytics200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -729,7 +705,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetOSAnalytics200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetOSAnalytics200ResponseInner>>> getOSAnalytics({
+  Future<Response<List<GetOSAnalytics200ResponseInner>>> getOSAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -805,13 +781,8 @@ class AnalyticsApi {
     List<GetOSAnalytics200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetOSAnalytics200ResponseInner>,
-                  GetOSAnalytics200ResponseInner>(
-              rawData, 'List<GetOSAnalytics200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetOSAnalytics200ResponseInner>, GetOSAnalytics200ResponseInner>(rawData, 'List<GetOSAnalytics200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -864,8 +835,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetRefererAnalytics200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetRefererAnalytics200ResponseInner>>>
-      getRefererAnalytics({
+  Future<Response<List<GetRefererAnalytics200ResponseInner>>> getRefererAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -941,13 +911,8 @@ class AnalyticsApi {
     List<GetRefererAnalytics200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetRefererAnalytics200ResponseInner>,
-                  GetRefererAnalytics200ResponseInner>(
-              rawData, 'List<GetRefererAnalytics200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetRefererAnalytics200ResponseInner>, GetRefererAnalytics200ResponseInner>(rawData, 'List<GetRefererAnalytics200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1000,8 +965,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetTimeseriesAnalytics200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetTimeseriesAnalytics200ResponseInner>>>
-      getTimeseriesAnalytics({
+  Future<Response<List<GetTimeseriesAnalytics200ResponseInner>>> getTimeseriesAnalytics({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -1077,13 +1041,8 @@ class AnalyticsApi {
     List<GetTimeseriesAnalytics200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetTimeseriesAnalytics200ResponseInner>,
-                  GetTimeseriesAnalytics200ResponseInner>(
-              rawData, 'List<GetTimeseriesAnalytics200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetTimeseriesAnalytics200ResponseInner>, GetTimeseriesAnalytics200ResponseInner>(rawData, 'List<GetTimeseriesAnalytics200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1136,7 +1095,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetTopLinks200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetTopLinks200ResponseInner>>> getTopLinks({
+  Future<Response<List<GetTopLinks200ResponseInner>>> getTopLinks({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -1212,13 +1171,8 @@ class AnalyticsApi {
     List<GetTopLinks200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetTopLinks200ResponseInner>,
-                  GetTopLinks200ResponseInner>(
-              rawData, 'List<GetTopLinks200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetTopLinks200ResponseInner>, GetTopLinks200ResponseInner>(rawData, 'List<GetTopLinks200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1271,7 +1225,7 @@ class AnalyticsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<GetTopURLs200ResponseInner>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<GetTopURLs200ResponseInner>>> getTopURLs({
+  Future<Response<List<GetTopURLs200ResponseInner>>> getTopURLs({ 
     required String workspaceId,
     String? projectSlug,
     String? domain,
@@ -1347,13 +1301,8 @@ class AnalyticsApi {
     List<GetTopURLs200ResponseInner>? _responseData;
 
     try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<GetTopURLs200ResponseInner>,
-                  GetTopURLs200ResponseInner>(
-              rawData, 'List<GetTopURLs200ResponseInner>',
-              growable: true);
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<GetTopURLs200ResponseInner>, GetTopURLs200ResponseInner>(rawData, 'List<GetTopURLs200ResponseInner>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1375,4 +1324,5 @@ class AnalyticsApi {
       extra: _response.extra,
     );
   }
+
 }

@@ -25,7 +25,6 @@ export 'package:dub/src/model/delete_domain200_response.dart';
 export 'package:dub/src/model/delete_link200_response.dart';
 export 'package:dub/src/model/domain_schema.dart';
 export 'package:dub/src/model/edit_domain_request.dart';
-export 'package:dub/src/model/edit_link_request.dart';
 export 'package:dub/src/model/get_browser_analytics200_response_inner.dart';
 export 'package:dub/src/model/get_city_analytics200_response_inner.dart';
 export 'package:dub/src/model/get_country_analytics200_response_inner.dart';

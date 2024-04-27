@@ -11,7 +11,7 @@ void main() {
     //
     // Bulk create up to 100 links for the authenticated workspace.
     //
-    //Future<List<LinkSchema>> bulkCreateLinks(String workspaceId, { String projectSlug, List<EditLinkRequest> editLinkRequest }) async
+    //Future<List<LinkSchema>> bulkCreateLinks(String workspaceId, { String projectSlug, List<CreateLinkRequest> createLinkRequest }) async
     test('test bulkCreateLinks', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Edit a link for the authenticated workspace.
     //
-    //Future<LinkSchema> editLink(String linkId, String workspaceId, { String projectSlug, EditLinkRequest editLinkRequest }) async
+    //Future<LinkSchema> editLink(String linkId, String workspaceId, { String projectSlug, CreateLinkRequest createLinkRequest }) async
     test('test editLink', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
     //
-    //Future<List<LinkSchema>> getLinks(String workspaceId, { String projectSlug, String domain, String tagId, String tagIds, String tagNames, String search, String userId, bool showArchived, bool withTags, String sort, num page }) async
+    //Future<List<LinkSchema>> getLinks(String workspaceId, { String projectSlug, String domain, String tagId, List<String> tagIds, List<String> tagNames, String search, String userId, bool showArchived, bool withTags, String sort, num page }) async
     test('test getLinks', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
     //
-    //Future<num> getLinksCount(String workspaceId, { String projectSlug, String domain, String tagId, String tagIds, String tagNames, String search, String userId, bool showArchived, bool withTags, String groupBy }) async
+    //Future<num> getLinksCount(String workspaceId, { String projectSlug, String domain, String tagId, List<String> tagIds, List<String> tagNames, String search, String userId, bool showArchived, bool withTags, List<String> groupBy }) async
     test('test getLinksCount', () async {
       // TODO
     });

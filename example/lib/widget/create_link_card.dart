@@ -267,7 +267,7 @@ class _CreateLinkCArdState extends State<CreateLinkCArd> {
                         onPressed: () {
                           if (link?.shortLink != null) {
                             Clipboard.setData(
-                                ClipboardData(text: link!.shortLink!));
+                                ClipboardData(text: link!.shortLink));
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Copied to clipboard'),

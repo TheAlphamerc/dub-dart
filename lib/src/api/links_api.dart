@@ -11,7 +11,6 @@ import 'package:dio/dio.dart';
 
 import 'package:dub/src/model/create_link_request.dart';
 import 'package:dub/src/model/delete_link200_response.dart';
-import 'package:dub/src/model/edit_link_request.dart';
 import 'package:dub/src/model/link_schema.dart';
 
 class LinksApi {
@@ -25,7 +24,7 @@ class LinksApi {
   /// Parameters:
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [editLinkRequest]
+  /// * [createLinkRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -38,7 +37,7 @@ class LinksApi {
   Future<Response<List<LinkSchema>>> bulkCreateLinks({
     required String workspaceId,
     String? projectSlug,
-    List<EditLinkRequest>? editLinkRequest,
+    List<CreateLinkRequest>? createLinkRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -74,7 +73,7 @@ class LinksApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(editLinkRequest);
+      _bodyData = jsonEncode(createLinkRequest);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -337,7 +336,7 @@ class LinksApi {
   /// * [linkId] - The id of the link to edit. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
   /// * [workspaceId] - The ID of the workspace.
   /// * [projectSlug] - The slug of the project. This field is deprecated – use `workspaceId` instead.
-  /// * [editLinkRequest]
+  /// * [createLinkRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -351,7 +350,7 @@ class LinksApi {
     required String linkId,
     required String workspaceId,
     String? projectSlug,
-    EditLinkRequest? editLinkRequest,
+    CreateLinkRequest? createLinkRequest,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -388,7 +387,7 @@ class LinksApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(editLinkRequest);
+      _bodyData = jsonEncode(createLinkRequest);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -566,8 +565,8 @@ class LinksApi {
     String? projectSlug,
     String? domain,
     String? tagId,
-    String? tagIds,
-    String? tagNames,
+    List<String>? tagIds,
+    List<String>? tagNames,
     String? search,
     String? userId,
     bool? showArchived = false,
@@ -684,13 +683,13 @@ class LinksApi {
     String? projectSlug,
     String? domain,
     String? tagId,
-    String? tagIds,
-    String? tagNames,
+    List<String>? tagIds,
+    List<String>? tagNames,
     String? search,
     String? userId,
     bool? showArchived = false,
     bool? withTags = false,
-    String? groupBy,
+    List<String>? groupBy,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

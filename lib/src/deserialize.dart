@@ -7,7 +7,6 @@ import 'package:dub/src/model/delete_domain200_response.dart';
 import 'package:dub/src/model/delete_link200_response.dart';
 import 'package:dub/src/model/domain_schema.dart';
 import 'package:dub/src/model/edit_domain_request.dart';
-import 'package:dub/src/model/edit_link_request.dart';
 import 'package:dub/src/model/get_browser_analytics200_response_inner.dart';
 import 'package:dub/src/model/get_city_analytics200_response_inner.dart';
 import 'package:dub/src/model/get_country_analytics200_response_inner.dart';
@@ -80,8 +79,6 @@ final _regMap = RegExp(r'^Map<String,(.*)>$');
           return DomainSchema.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'EditDomainRequest':
           return EditDomainRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
-        case 'EditLinkRequest':
-          return EditLinkRequest.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'GetBrowserAnalytics200ResponseInner':
           return GetBrowserAnalytics200ResponseInner.fromJson(value as Map<String, dynamic>) as ReturnType;
         case 'GetCityAnalytics200ResponseInner':

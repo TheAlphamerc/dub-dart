@@ -13,7 +13,6 @@ doc/DeleteLink200Response.md
 doc/DomainSchema.md
 doc/DomainsApi.md
 doc/EditDomainRequest.md
-doc/EditLinkRequest.md
 doc/GetBrowserAnalytics200ResponseInner.md
 doc/GetCityAnalytics200ResponseInner.md
 doc/GetCountryAnalytics200ResponseInner.md
@@ -78,7 +77,6 @@ lib/src/model/delete_domain200_response.dart
 lib/src/model/delete_link200_response.dart
 lib/src/model/domain_schema.dart
 lib/src/model/edit_domain_request.dart
-lib/src/model/edit_link_request.dart
 lib/src/model/get_browser_analytics200_response_inner.dart
 lib/src/model/get_city_analytics200_response_inner.dart
 lib/src/model/get_country_analytics200_response_inner.dart
@@ -126,7 +124,6 @@ test/delete_link200_response_test.dart
 test/domain_schema_test.dart
 test/domains_api_test.dart
 test/edit_domain_request_test.dart
-test/edit_link_request_test.dart
 test/get_browser_analytics200_response_inner_test.dart
 test/get_city_analytics200_response_inner_test.dart
 test/get_country_analytics200_response_inner_test.dart

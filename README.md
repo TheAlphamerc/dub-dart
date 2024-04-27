@@ -6,12 +6,6 @@ Dub is link management infrastructure for companies to create marketing campaign
 
 For more information, please visit [https://dub.co/api](https://dub.co/api)
 
-## Requirements
-
-- Dart 2.15.0+ or Flutter 2.8.0+
-- Dio 5.0.0+ (https://pub.dev/packages/dio)
-- JSON Serializable 6.1.5+ (https://pub.dev/packages/json_serializable)
-
 ## Installation & Usage
 
 ### pub.dev
@@ -129,7 +123,6 @@ All URIs are relative to *https://api.dub.co*
 - [DeleteLink200Response](doc/DeleteLink200Response.md)
 - [DomainSchema](doc/DomainSchema.md)
 - [EditDomainRequest](doc/EditDomainRequest.md)
-- [EditLinkRequest](doc/EditLinkRequest.md)
 - [GetBrowserAnalytics200ResponseInner](doc/GetBrowserAnalytics200ResponseInner.md)
 - [GetCityAnalytics200ResponseInner](doc/GetCityAnalytics200ResponseInner.md)
 - [GetCountryAnalytics200ResponseInner](doc/GetCountryAnalytics200ResponseInner.md)
