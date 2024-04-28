@@ -1,5 +1,5 @@
 name: dub
-version: 0.0.1
+version: 0.0.2
 description: Unofficial Dub.co SDK
 homepage: https://dub.co
 repository: https://github.com/thealphamerc/dub-dart
