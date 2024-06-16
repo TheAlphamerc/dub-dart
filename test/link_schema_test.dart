@@ -37,6 +37,12 @@ void main() {
       // TODO
     });
 
+    // [BETA] Whether to track conversions for the short link.
+    // bool trackConversion (default value: false)
+    test('to test the property `trackConversion`', () async {
+      // TODO
+    });
+
     // Whether the short link is archived.
     // bool archived (default value: false)
     test('to test the property `archived`', () async {
@@ -44,7 +50,7 @@ void main() {
     });
 
     // The date and time when the short link will expire in ISO-8601 format.
-    // DateTime expiresAt
+    // String expiresAt
     test('to test the property `expiresAt`', () async {
       // TODO
     });
@@ -195,6 +201,18 @@ void main() {
     // The date and time when the short link was last clicked.
     // String lastClicked
     test('to test the property `lastClicked`', () async {
+      // TODO
+    });
+
+    // [BETA]: The number of leads the short links has generated.
+    // num leads (default value: 0)
+    test('to test the property `leads`', () async {
+      // TODO
+    });
+
+    // [BETA]: The number of sales the short links has generated.
+    // num sales (default value: 0)
+    test('to test the property `sales`', () async {
       // TODO
     });
 

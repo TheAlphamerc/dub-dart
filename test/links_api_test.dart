@@ -34,20 +34,11 @@ void main() {
       // TODO
     });
 
-    // Edit a link
-    //
-    // Edit a link for the authenticated workspace.
-    //
-    //Future<LinkSchema> editLink(String linkId, String workspaceId, { String projectSlug, CreateLinkRequest createLinkRequest }) async
-    test('test editLink', () async {
-      // TODO
-    });
-
     // Retrieve a link
     //
-    // Retrieve the info for a link from their domain and key.
+    // Retrieve the info for a link.
     //
-    //Future<LinkSchema> getLinkInfo(String workspaceId, String domain, String key, { String projectSlug }) async
+    //Future<LinkSchema> getLinkInfo(String workspaceId, { String projectSlug, String domain, String key, String linkId, String externalId }) async
     test('test getLinkInfo', () async {
       // TODO
     });
@@ -56,7 +47,7 @@ void main() {
     //
     // Retrieve a list of links for the authenticated workspace. The list will be paginated and the provided query parameters allow filtering the returned links.
     //
-    //Future<List<LinkSchema>> getLinks(String workspaceId, { String projectSlug, String domain, String tagId, List<String> tagIds, List<String> tagNames, String search, String userId, bool showArchived, bool withTags, String sort, num page }) async
+    //Future<List<LinkSchema>> getLinks(String workspaceId, { String projectSlug, String domain, String tagId, GetLinksTagIdsParameter tagIds, GetLinksTagNamesParameter tagNames, String search, String userId, bool showArchived, bool withTags, String sort, num page }) async
     test('test getLinks', () async {
       // TODO
     });
@@ -65,8 +56,26 @@ void main() {
     //
     // Retrieve the number of links for the authenticated workspace. The provided query parameters allow filtering the returned links.
     //
-    //Future<num> getLinksCount(String workspaceId, { String projectSlug, String domain, String tagId, List<String> tagIds, List<String> tagNames, String search, String userId, bool showArchived, bool withTags, List<String> groupBy }) async
+    //Future<num> getLinksCount(String workspaceId, { String projectSlug, String domain, String tagId, GetLinksTagIdsParameter tagIds, GetLinksTagNamesParameter tagNames, String search, String userId, bool showArchived, bool withTags, GetLinksCountGroupByParameter groupBy }) async
     test('test getLinksCount', () async {
+      // TODO
+    });
+
+    // Update a link
+    //
+    // Update a link for the authenticated workspace. If there's no change, returns it as it is.
+    //
+    //Future<LinkSchema> updateLink(String linkId, String workspaceId, { String projectSlug, CreateLinkRequest createLinkRequest }) async
+    test('test updateLink', () async {
+      // TODO
+    });
+
+    // Upsert a link
+    //
+    // Upsert a link for the authenticated workspace by its URL. If a link with the same URL already exists, return it (or update it if there are any changes). Otherwise, a new link will be created.
+    //
+    //Future<LinkSchema> upsertLink(String workspaceId, { String projectSlug, CreateLinkRequest createLinkRequest }) async
+    test('test upsertLink', () async {
       // TODO
     });
 

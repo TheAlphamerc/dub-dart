@@ -28,6 +28,7 @@ WorkspaceSchema _$WorkspaceSchemaFromJson(Map<String, dynamic> json) =>
             'plan',
             'stripeId',
             'billingCycleStart',
+            'stripeConnectId',
             'createdAt',
             'users',
             'domains',
@@ -51,6 +52,8 @@ WorkspaceSchema _$WorkspaceSchemaFromJson(Map<String, dynamic> json) =>
           stripeId: $checkedConvert('stripeId', (v) => v as String?),
           billingCycleStart:
               $checkedConvert('billingCycleStart', (v) => v as num),
+          stripeConnectId:
+              $checkedConvert('stripeConnectId', (v) => v as String?),
           createdAt: $checkedConvert('createdAt', (v) => v as String),
           users: $checkedConvert(
               'users',
@@ -65,32 +68,44 @@ WorkspaceSchema _$WorkspaceSchemaFromJson(Map<String, dynamic> json) =>
                       e as Map<String, dynamic>))
                   .toList()),
           inviteCode: $checkedConvert('inviteCode', (v) => v as String?),
+          betaTester: $checkedConvert('betaTester', (v) => v as bool?),
         );
         return val;
       },
     );
 
-Map<String, dynamic> _$WorkspaceSchemaToJson(WorkspaceSchema instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'slug': instance.slug,
-      'logo': instance.logo,
-      'usage': instance.usage,
-      'usageLimit': instance.usageLimit,
-      'linksUsage': instance.linksUsage,
-      'linksLimit': instance.linksLimit,
-      'domainsLimit': instance.domainsLimit,
-      'tagsLimit': instance.tagsLimit,
-      'usersLimit': instance.usersLimit,
-      'plan': _$WorkspaceSchemaPlanEnumEnumMap[instance.plan]!,
-      'stripeId': instance.stripeId,
-      'billingCycleStart': instance.billingCycleStart,
-      'createdAt': instance.createdAt,
-      'users': instance.users.map((e) => e.toJson()).toList(),
-      'domains': instance.domains.map((e) => e.toJson()).toList(),
-      'inviteCode': instance.inviteCode,
-    };
+Map<String, dynamic> _$WorkspaceSchemaToJson(WorkspaceSchema instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'name': instance.name,
+    'slug': instance.slug,
+    'logo': instance.logo,
+    'usage': instance.usage,
+    'usageLimit': instance.usageLimit,
+    'linksUsage': instance.linksUsage,
+    'linksLimit': instance.linksLimit,
+    'domainsLimit': instance.domainsLimit,
+    'tagsLimit': instance.tagsLimit,
+    'usersLimit': instance.usersLimit,
+    'plan': _$WorkspaceSchemaPlanEnumEnumMap[instance.plan]!,
+    'stripeId': instance.stripeId,
+    'billingCycleStart': instance.billingCycleStart,
+    'stripeConnectId': instance.stripeConnectId,
+    'createdAt': instance.createdAt,
+    'users': instance.users.map((e) => e.toJson()).toList(),
+    'domains': instance.domains.map((e) => e.toJson()).toList(),
+    'inviteCode': instance.inviteCode,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('betaTester', instance.betaTester);
+  return val;
+}
 
 const _$WorkspaceSchemaPlanEnumEnumMap = {
   WorkspaceSchemaPlanEnum.free: 'free',

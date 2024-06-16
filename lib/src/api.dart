@@ -13,6 +13,7 @@ import 'package:dub/src/api/links_api.dart';
 import 'package:dub/src/api/metatags_api.dart';
 import 'package:dub/src/api/qr_codes_api.dart';
 import 'package:dub/src/api/tags_api.dart';
+import 'package:dub/src/api/track_api.dart';
 import 'package:dub/src/api/workspaces_api.dart';
 
 class Dub {
@@ -100,6 +101,12 @@ class Dub {
   /// by doing that all interceptors will not be executed
   TagsApi getTagsApi() {
     return TagsApi(dio);
+  }
+
+  /// Get TrackApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  TrackApi getTrackApi() {
+    return TrackApi(dio);
   }
 
   /// Get WorkspacesApi instance, base route and serializer can be overridden by a given but be careful,

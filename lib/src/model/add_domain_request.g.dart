@@ -17,10 +17,15 @@ AddDomainRequest _$AddDomainRequestFromJson(Map<String, dynamic> json) =>
         );
         final val = AddDomainRequest(
           slug: $checkedConvert('slug', (v) => v as String),
-          type: $checkedConvert('type', (v) => v as String? ?? 'redirect'),
+          type: $checkedConvert(
+              'type',
+              (v) =>
+                  $enumDecodeNullable(_$AddDomainRequestTypeEnumEnumMap, v) ??
+                  'redirect'),
           target: $checkedConvert('target', (v) => v as String?),
           expiredUrl: $checkedConvert('expiredUrl', (v) => v as String?),
           archived: $checkedConvert('archived', (v) => v as bool? ?? false),
+          noindex: $checkedConvert('noindex', (v) => v as bool?),
           placeholder: $checkedConvert('placeholder',
               (v) => v as String? ?? 'https://dub.co/help/article/what-is-dub'),
         );
@@ -39,10 +44,17 @@ Map<String, dynamic> _$AddDomainRequestToJson(AddDomainRequest instance) {
     }
   }
 
-  writeNotNull('type', instance.type);
+  writeNotNull('type', _$AddDomainRequestTypeEnumEnumMap[instance.type]);
   writeNotNull('target', instance.target);
   writeNotNull('expiredUrl', instance.expiredUrl);
   writeNotNull('archived', instance.archived);
+  writeNotNull('noindex', instance.noindex);
   writeNotNull('placeholder', instance.placeholder);
   return val;
 }
+
+const _$AddDomainRequestTypeEnumEnumMap = {
+  AddDomainRequestTypeEnum.redirect: 'redirect',
+  AddDomainRequestTypeEnum.rewrite: 'rewrite',
+  AddDomainRequestTypeEnum.unknownDefaultOpenApi: 'unknown_default_open_api',
+};

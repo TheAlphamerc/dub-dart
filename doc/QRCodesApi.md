@@ -24,7 +24,7 @@ Retrieve a QR code for a link.
 import 'package:dub/api.dart';
 
 final api = Dub().getQRCodesApi();
-final String url = url_example; // String | The URL to generate a QR code for. Defaults to `https://dub.co` if not provided.
+final String url = url_example; // String | The URL to generate a QR code for.
 final num size = 8.14; // num | The size of the QR code in pixels. Defaults to `600` if not provided.
 final String level = level_example; // String | The level of error correction to use for the QR code. Defaults to `L` if not provided.
 final String fgColor = fgColor_example; // String | The foreground color of the QR code in hex format. Defaults to `#000000` if not provided.
@@ -43,7 +43,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **url** | **String**| The URL to generate a QR code for. Defaults to `https://dub.co` if not provided. | [optional] [default to 'https://dub.co']
+ **url** | **String**| The URL to generate a QR code for. | 
  **size** | **num**| The size of the QR code in pixels. Defaults to `600` if not provided. | [optional] [default to 600]
  **level** | **String**| The level of error correction to use for the QR code. Defaults to `L` if not provided. | [optional] [default to 'L']
  **fgColor** | **String**| The foreground color of the QR code in hex format. Defaults to `#000000` if not provided. | [optional] [default to '#000000']
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[token](../README.md#token)
+No authorization required
 
 ### HTTP request headers
 

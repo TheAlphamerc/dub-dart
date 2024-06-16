@@ -30,6 +30,8 @@ class LinkSchema {
 
     required  this.url,
 
+     this.trackConversion = false,
+
      this.archived = false,
 
     required  this.expiresAt,
@@ -83,6 +85,10 @@ class LinkSchema {
      this.clicks = 0,
 
     required  this.lastClicked,
+
+     this.leads = 0,
+
+     this.sales = 0,
 
     required  this.createdAt,
 
@@ -156,6 +162,19 @@ class LinkSchema {
 
 
 
+      /// [BETA] Whether to track conversions for the short link.
+  @JsonKey(
+    defaultValue: false,
+    name: r'trackConversion',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final bool trackConversion;
+
+
+
       /// Whether the short link is archived.
   @JsonKey(
     defaultValue: false,
@@ -178,7 +197,7 @@ class LinkSchema {
   )
 
 
-  final DateTime? expiresAt;
+  final String? expiresAt;
 
 
 
@@ -507,6 +526,32 @@ class LinkSchema {
 
 
 
+      /// [BETA]: The number of leads the short links has generated.
+  @JsonKey(
+    defaultValue: 0,
+    name: r'leads',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final num leads;
+
+
+
+      /// [BETA]: The number of sales the short links has generated.
+  @JsonKey(
+    defaultValue: 0,
+    name: r'sales',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final num sales;
+
+
+
       /// The date and time when the short link was created.
   @JsonKey(
     
@@ -554,6 +599,7 @@ class LinkSchema {
      other.key == key &&
      other.externalId == externalId &&
      other.url == url &&
+     other.trackConversion == trackConversion &&
      other.archived == archived &&
      other.expiresAt == expiresAt &&
      other.expiredUrl == expiredUrl &&
@@ -581,6 +627,8 @@ class LinkSchema {
      other.workspaceId == workspaceId &&
      other.clicks == clicks &&
      other.lastClicked == lastClicked &&
+     other.leads == leads &&
+     other.sales == sales &&
      other.createdAt == createdAt &&
      other.updatedAt == updatedAt &&
      other.projectId == projectId;
@@ -592,6 +640,7 @@ class LinkSchema {
     key.hashCode +
     (externalId == null ? 0 : externalId.hashCode) +
     url.hashCode +
+    trackConversion.hashCode +
     archived.hashCode +
     (expiresAt == null ? 0 : expiresAt.hashCode) +
     (expiredUrl == null ? 0 : expiredUrl.hashCode) +
@@ -619,6 +668,8 @@ class LinkSchema {
     workspaceId.hashCode +
     clicks.hashCode +
     (lastClicked == null ? 0 : lastClicked.hashCode) +
+    leads.hashCode +
+    sales.hashCode +
     createdAt.hashCode +
     updatedAt.hashCode +
     projectId.hashCode;

@@ -10,6 +10,15 @@ import 'package:dub/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
 import 'package:dub/src/model/create_workspace_request.dart';
+import 'package:dub/src/model/get_links400_response.dart';
+import 'package:dub/src/model/get_links401_response.dart';
+import 'package:dub/src/model/get_links403_response.dart';
+import 'package:dub/src/model/get_links404_response.dart';
+import 'package:dub/src/model/get_links409_response.dart';
+import 'package:dub/src/model/get_links410_response.dart';
+import 'package:dub/src/model/get_links422_response.dart';
+import 'package:dub/src/model/get_links429_response.dart';
+import 'package:dub/src/model/get_links500_response.dart';
 import 'package:dub/src/model/workspace_schema.dart';
 
 class WorkspacesApi {

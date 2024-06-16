@@ -11,10 +11,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addDomain**](DomainsApi.md#adddomain) | **POST** /domains | Add a domain
 [**deleteDomain**](DomainsApi.md#deletedomain) | **DELETE** /domains/{slug} | Delete a domain
-[**editDomain**](DomainsApi.md#editdomain) | **PATCH** /domains/{slug} | Edit a domain
 [**listDomains**](DomainsApi.md#listdomains) | **GET** /domains | Retrieve a list of domains
 [**setPrimaryDomain**](DomainsApi.md#setprimarydomain) | **POST** /domains/{slug}/primary | Set a domain as primary
 [**transferDomain**](DomainsApi.md#transferdomain) | **POST** /domains/{slug}/transfer | Transfer a domain
+[**updateDomain**](DomainsApi.md#updatedomain) | **PATCH** /domains/{slug} | Update a domain
 
 
 # **addDomain**
@@ -107,55 +107,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **editDomain**
-> DomainSchema editDomain(slug, workspaceId, projectSlug, editDomainRequest)
-
-Edit a domain
-
-Edit a domain for the authenticated workspace.
-
-### Example
-```dart
-import 'package:dub/api.dart';
-
-final api = Dub().getDomainsApi();
-final String slug = acme.com; // String | The domain name.
-final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
-final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
-final EditDomainRequest editDomainRequest = ; // EditDomainRequest | 
-
-try {
-    final response = api.editDomain(slug, workspaceId, projectSlug, editDomainRequest);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling DomainsApi->editDomain: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **slug** | **String**| The domain name. | 
- **workspaceId** | **String**| The ID of the workspace. | 
- **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
- **editDomainRequest** | [**EditDomainRequest**](EditDomainRequest.md)|  | [optional] 
-
-### Return type
-
-[**DomainSchema**](DomainSchema.md)
-
-### Authorization
-
-[token](../README.md#token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -285,6 +236,55 @@ Name | Type | Description  | Notes
  **workspaceId** | **String**| The ID of the workspace. | 
  **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
  **transferDomainRequest** | [**TransferDomainRequest**](TransferDomainRequest.md)|  | [optional] 
+
+### Return type
+
+[**DomainSchema**](DomainSchema.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateDomain**
+> DomainSchema updateDomain(slug, workspaceId, projectSlug, updateDomainRequest)
+
+Update a domain
+
+Update a domain for the authenticated workspace.
+
+### Example
+```dart
+import 'package:dub/api.dart';
+
+final api = Dub().getDomainsApi();
+final String slug = acme.com; // String | The domain name.
+final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
+final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
+final UpdateDomainRequest updateDomainRequest = ; // UpdateDomainRequest | 
+
+try {
+    final response = api.updateDomain(slug, workspaceId, projectSlug, updateDomainRequest);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling DomainsApi->updateDomain: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **String**| The domain name. | 
+ **workspaceId** | **String**| The ID of the workspace. | 
+ **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
+ **updateDomainRequest** | [**UpdateDomainRequest**](UpdateDomainRequest.md)|  | [optional] 
 
 ### Return type
 

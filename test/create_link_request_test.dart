@@ -37,6 +37,12 @@ void main() {
       // TODO
     });
 
+    // Whether to track conversions for the short link.
+    // bool trackConversion (default value: false)
+    test('to test the property `trackConversion`', () async {
+      // TODO
+    });
+
     // Whether the short link is archived.
     // bool archived (default value: false)
     test('to test the property `archived`', () async {
@@ -55,14 +61,12 @@ void main() {
       // TODO
     });
 
-    // The unique IDs of the tags assigned to the short link.
-    // List<String> tagIds
+    // CreateLinkRequestTagIds tagIds
     test('to test the property `tagIds`', () async {
       // TODO
     });
 
-    // The unique name of the tags assigned to the short link (case insensitive).
-    // List<String> tagNames
+    // GetLinksTagNamesParameter tagNames
     test('to test the property `tagNames`', () async {
       // TODO
     });
@@ -133,7 +137,7 @@ void main() {
       // TODO
     });
 
-    // CreateLinkRequestGeo geo
+    // LinkGeoTargeting geo
     test('to test the property `geo`', () async {
       // TODO
     });

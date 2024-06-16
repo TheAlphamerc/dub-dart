@@ -18,6 +18,8 @@ class DomainSchema {
   /// Returns a new [DomainSchema] instance.
   DomainSchema({
 
+    required  this.id,
+
     required  this.slug,
 
      this.verified = false,
@@ -25,6 +27,8 @@ class DomainSchema {
      this.primary = false,
 
      this.archived = false,
+
+     this.noindex = false,
 
      this.placeholder = 'https://dub.co/help/article/what-is-dub',
 
@@ -36,6 +40,19 @@ class DomainSchema {
 
      this.clicks = 0,
   });
+
+      /// The unique identifier of the domain.
+  @JsonKey(
+    
+    name: r'id',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String id;
+
+
 
       /// The domain name.
   @JsonKey(
@@ -89,6 +106,19 @@ class DomainSchema {
 
 
 
+      /// Prevent search engines from indexing the domain.
+  @JsonKey(
+    defaultValue: false,
+    name: r'noindex',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final bool noindex;
+
+
+
       /// Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
   @JsonKey(
     defaultValue: 'https://dub.co/help/article/what-is-dub',
@@ -128,7 +158,7 @@ class DomainSchema {
 
 
 
-      /// The type of redirect to use for this domain. Either `redirect` or `rewrite`.
+      /// The type of redirect to use for this domain.
   @JsonKey(
     
     name: r'type',
@@ -137,7 +167,7 @@ class DomainSchema {
   )
 
 
-  final String type;
+  final DomainSchemaTypeEnum type;
 
 
 
@@ -156,10 +186,12 @@ class DomainSchema {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DomainSchema &&
+     other.id == id &&
      other.slug == slug &&
      other.verified == verified &&
      other.primary == primary &&
      other.archived == archived &&
+     other.noindex == noindex &&
      other.placeholder == placeholder &&
      other.expiredUrl == expiredUrl &&
      other.target == target &&
@@ -168,10 +200,12 @@ class DomainSchema {
 
   @override
   int get hashCode =>
+    id.hashCode +
     slug.hashCode +
     verified.hashCode +
     primary.hashCode +
     archived.hashCode +
+    noindex.hashCode +
     placeholder.hashCode +
     (expiredUrl == null ? 0 : expiredUrl.hashCode) +
     (target == null ? 0 : target.hashCode) +
@@ -188,4 +222,15 @@ class DomainSchema {
   }
 
 }
+
+/// The type of redirect to use for this domain.
+enum DomainSchemaTypeEnum {
+  @JsonValue(r'redirect')
+  redirect,
+  @JsonValue(r'rewrite')
+  rewrite,
+  @JsonValue(r'unknown_default_open_api')
+  unknownDefaultOpenApi,
+}
+
 

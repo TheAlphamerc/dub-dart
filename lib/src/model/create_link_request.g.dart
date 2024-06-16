@@ -21,14 +21,24 @@ CreateLinkRequest _$CreateLinkRequestFromJson(Map<String, dynamic> json) =>
           key: $checkedConvert('key', (v) => v as String?),
           externalId: $checkedConvert('externalId', (v) => v as String?),
           prefix: $checkedConvert('prefix', (v) => v as String?),
+          trackConversion:
+              $checkedConvert('trackConversion', (v) => v as bool? ?? false),
           archived: $checkedConvert('archived', (v) => v as bool? ?? false),
           publicStats:
               $checkedConvert('publicStats', (v) => v as bool? ?? false),
           tagId: $checkedConvert('tagId', (v) => v as String?),
-          tagIds: $checkedConvert('tagIds',
-              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
-          tagNames: $checkedConvert('tagNames',
-              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+          tagIds: $checkedConvert(
+              'tagIds',
+              (v) => v == null
+                  ? null
+                  : CreateLinkRequestTagIds.fromJson(
+                      v as Map<String, dynamic>)),
+          tagNames: $checkedConvert(
+              'tagNames',
+              (v) => v == null
+                  ? null
+                  : GetLinksTagNamesParameter.fromJson(
+                      v as Map<String, dynamic>)),
           comments: $checkedConvert('comments', (v) => v as String?),
           expiresAt: $checkedConvert('expiresAt', (v) => v as String?),
           expiredUrl: $checkedConvert('expiredUrl', (v) => v as String?),
@@ -44,7 +54,7 @@ CreateLinkRequest _$CreateLinkRequestFromJson(Map<String, dynamic> json) =>
               'geo',
               (v) => v == null
                   ? null
-                  : CreateLinkRequestGeo.fromJson(v as Map<String, dynamic>)),
+                  : LinkGeoTargeting.fromJson(v as Map<String, dynamic>)),
         );
         return val;
       },
@@ -65,11 +75,12 @@ Map<String, dynamic> _$CreateLinkRequestToJson(CreateLinkRequest instance) {
   writeNotNull('key', instance.key);
   writeNotNull('externalId', instance.externalId);
   writeNotNull('prefix', instance.prefix);
+  writeNotNull('trackConversion', instance.trackConversion);
   writeNotNull('archived', instance.archived);
   writeNotNull('publicStats', instance.publicStats);
   writeNotNull('tagId', instance.tagId);
-  writeNotNull('tagIds', instance.tagIds);
-  writeNotNull('tagNames', instance.tagNames);
+  writeNotNull('tagIds', instance.tagIds?.toJson());
+  writeNotNull('tagNames', instance.tagNames?.toJson());
   writeNotNull('comments', instance.comments);
   writeNotNull('expiresAt', instance.expiresAt);
   writeNotNull('expiredUrl', instance.expiredUrl);

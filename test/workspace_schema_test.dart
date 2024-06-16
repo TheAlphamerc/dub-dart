@@ -91,6 +91,12 @@ void main() {
       // TODO
     });
 
+    // [BETA]: The Stripe Connect ID of the workspace.
+    // String stripeConnectId
+    test('to test the property `stripeConnectId`', () async {
+      // TODO
+    });
+
     // The date and time when the workspace was created.
     // String createdAt
     test('to test the property `createdAt`', () async {
@@ -112,6 +118,12 @@ void main() {
     // The invite code of the workspace.
     // String inviteCode
     test('to test the property `inviteCode`', () async {
+      // TODO
+    });
+
+    // Whether the workspace is enrolled in the beta testing program.
+    // bool betaTester
+    test('to test the property `betaTester`', () async {
       // TODO
     });
 

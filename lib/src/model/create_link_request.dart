@@ -3,7 +3,9 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:dub/src/model/create_link_request_geo.dart';
+import 'package:dub/src/model/create_link_request_tag_ids.dart';
+import 'package:dub/src/model/link_geo_targeting.dart';
+import 'package:dub/src/model/get_links_tag_names_parameter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'create_link_request.g.dart';
@@ -28,6 +30,8 @@ class CreateLinkRequest {
      this.externalId,
 
      this.prefix,
+
+     this.trackConversion = false,
 
      this.archived = false,
 
@@ -129,6 +133,19 @@ class CreateLinkRequest {
 
 
 
+      /// Whether to track conversions for the short link.
+  @JsonKey(
+    defaultValue: false,
+    name: r'trackConversion',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? trackConversion;
+
+
+
       /// Whether the short link is archived.
   @JsonKey(
     defaultValue: false,
@@ -169,7 +186,6 @@ class CreateLinkRequest {
 
 
 
-      /// The unique IDs of the tags assigned to the short link.
   @JsonKey(
     
     name: r'tagIds',
@@ -178,11 +194,10 @@ class CreateLinkRequest {
   )
 
 
-  final List<String>? tagIds;
+  final CreateLinkRequestTagIds? tagIds;
 
 
 
-      /// The unique name of the tags assigned to the short link (case insensitive).
   @JsonKey(
     
     name: r'tagNames',
@@ -191,7 +206,7 @@ class CreateLinkRequest {
   )
 
 
-  final List<String>? tagNames;
+  final GetLinksTagNamesParameter? tagNames;
 
 
 
@@ -346,7 +361,7 @@ class CreateLinkRequest {
   )
 
 
-  final CreateLinkRequestGeo? geo;
+  final LinkGeoTargeting? geo;
 
 
 
@@ -357,6 +372,7 @@ class CreateLinkRequest {
      other.key == key &&
      other.externalId == externalId &&
      other.prefix == prefix &&
+     other.trackConversion == trackConversion &&
      other.archived == archived &&
      other.publicStats == publicStats &&
      other.tagId == tagId &&
@@ -382,6 +398,7 @@ class CreateLinkRequest {
     key.hashCode +
     (externalId == null ? 0 : externalId.hashCode) +
     prefix.hashCode +
+    trackConversion.hashCode +
     archived.hashCode +
     publicStats.hashCode +
     (tagId == null ? 0 : tagId.hashCode) +

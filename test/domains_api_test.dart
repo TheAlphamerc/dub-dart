@@ -25,15 +25,6 @@ void main() {
       // TODO
     });
 
-    // Edit a domain
-    //
-    // Edit a domain for the authenticated workspace.
-    //
-    //Future<DomainSchema> editDomain(String slug, String workspaceId, { String projectSlug, EditDomainRequest editDomainRequest }) async
-    test('test editDomain', () async {
-      // TODO
-    });
-
     // Retrieve a list of domains
     //
     // Retrieve a list of domains associated with the authenticated workspace.
@@ -58,6 +49,15 @@ void main() {
     //
     //Future<DomainSchema> transferDomain(String slug, String workspaceId, { String projectSlug, TransferDomainRequest transferDomainRequest }) async
     test('test transferDomain', () async {
+      // TODO
+    });
+
+    // Update a domain
+    //
+    // Update a domain for the authenticated workspace.
+    //
+    //Future<DomainSchema> updateDomain(String slug, String workspaceId, { String projectSlug, UpdateDomainRequest updateDomainRequest }) async
+    test('test updateDomain', () async {
       // TODO
     });
 

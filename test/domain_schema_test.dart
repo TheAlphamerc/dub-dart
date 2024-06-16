@@ -7,6 +7,12 @@ void main() {
   // TODO add properties to the entity
 
   group(DomainSchema, () {
+    // The unique identifier of the domain.
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
     // The domain name.
     // String slug
     test('to test the property `slug`', () async {
@@ -31,6 +37,12 @@ void main() {
       // TODO
     });
 
+    // Prevent search engines from indexing the domain.
+    // bool noindex (default value: false)
+    test('to test the property `noindex`', () async {
+      // TODO
+    });
+
     // Provide context to your teammates in the link creation modal by showing them an example of a link to be shortened.
     // String placeholder (default value: 'https://dub.co/help/article/what-is-dub')
     test('to test the property `placeholder`', () async {
@@ -49,7 +61,7 @@ void main() {
       // TODO
     });
 
-    // The type of redirect to use for this domain. Either `redirect` or `rewrite`.
+    // The type of redirect to use for this domain.
     // String type
     test('to test the property `type`', () async {
       // TODO

@@ -1,3 +1,7 @@
+## 0.0.2
+
+- Sync with latest version of `dub` api
+
 ## 0.0.1
 
 - Initial version of dub package

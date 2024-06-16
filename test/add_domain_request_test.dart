@@ -13,7 +13,7 @@ void main() {
       // TODO
     });
 
-    // The type of redirect to use for this domain. Can be `redirect` or `rewrite`.
+    // The type of redirect to use for this domain.
     // String type (default value: 'redirect')
     test('to test the property `type`', () async {
       // TODO
@@ -34,6 +34,12 @@ void main() {
     // Whether to archive this domain. `false` will unarchive a previously archived domain.
     // bool archived (default value: false)
     test('to test the property `archived`', () async {
+      // TODO
+    });
+
+    // Prevent search engines from indexing the domain. Defaults to `false`.
+    // bool noindex
+    test('to test the property `noindex`', () async {
       // TODO
     });
 

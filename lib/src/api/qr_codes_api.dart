@@ -9,6 +9,15 @@ import 'dart:convert';
 import 'package:dub/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
+import 'package:dub/src/model/get_links400_response.dart';
+import 'package:dub/src/model/get_links401_response.dart';
+import 'package:dub/src/model/get_links403_response.dart';
+import 'package:dub/src/model/get_links404_response.dart';
+import 'package:dub/src/model/get_links409_response.dart';
+import 'package:dub/src/model/get_links410_response.dart';
+import 'package:dub/src/model/get_links422_response.dart';
+import 'package:dub/src/model/get_links429_response.dart';
+import 'package:dub/src/model/get_links500_response.dart';
 
 class QRCodesApi {
 
@@ -20,7 +29,7 @@ class QRCodesApi {
   /// Retrieve a QR code for a link.
   ///
   /// Parameters:
-  /// * [url] - The URL to generate a QR code for. Defaults to `https://dub.co` if not provided.
+  /// * [url] - The URL to generate a QR code for.
   /// * [size] - The size of the QR code in pixels. Defaults to `600` if not provided.
   /// * [level] - The level of error correction to use for the QR code. Defaults to `L` if not provided.
   /// * [fgColor] - The foreground color of the QR code in hex format. Defaults to `#000000` if not provided.
@@ -36,7 +45,7 @@ class QRCodesApi {
   /// Returns a [Future] containing a [Response] with a [String] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<String>> getQRCode({ 
-    String? url = 'https://dub.co',
+    required String url,
     num? size = 600,
     String? level = 'L',
     String? fgColor = '#000000',
@@ -56,20 +65,14 @@ class QRCodesApi {
         ...?headers,
       },
       extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'token',
-          },
-        ],
+        'secure': <Map<String, String>>[],
         ...?extra,
       },
       validateStatus: validateStatus,
     );
 
     final _queryParameters = <String, dynamic>{
-      if (url != null) r'url': url,
+      r'url': url,
       if (size != null) r'size': size,
       if (level != null) r'level': level,
       if (fgColor != null) r'fgColor': fgColor,

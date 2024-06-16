@@ -12,10 +12,11 @@ Method | HTTP request | Description
 [**bulkCreateLinks**](LinksApi.md#bulkcreatelinks) | **POST** /links/bulk | Bulk create links
 [**createLink**](LinksApi.md#createlink) | **POST** /links | Create a new link
 [**deleteLink**](LinksApi.md#deletelink) | **DELETE** /links/{linkId} | Delete a link
-[**editLink**](LinksApi.md#editlink) | **PUT** /links/{linkId} | Edit a link
 [**getLinkInfo**](LinksApi.md#getlinkinfo) | **GET** /links/info | Retrieve a link
 [**getLinks**](LinksApi.md#getlinks) | **GET** /links | Retrieve a list of links
 [**getLinksCount**](LinksApi.md#getlinkscount) | **GET** /links/count | Retrieve the number of links
+[**updateLink**](LinksApi.md#updatelink) | **PATCH** /links/{linkId} | Update a link
+[**upsertLink**](LinksApi.md#upsertlink) | **PUT** /links/upsert | Upsert a link
 
 
 # **bulkCreateLinks**
@@ -159,61 +160,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **editLink**
-> LinkSchema editLink(linkId, workspaceId, projectSlug, createLinkRequest)
-
-Edit a link
-
-Edit a link for the authenticated workspace.
-
-### Example
-```dart
-import 'package:dub/api.dart';
-
-final api = Dub().getLinksApi();
-final String linkId = linkId_example; // String | The id of the link to edit. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
-final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
-final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
-final CreateLinkRequest createLinkRequest = ; // CreateLinkRequest | 
-
-try {
-    final response = api.editLink(linkId, workspaceId, projectSlug, createLinkRequest);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling LinksApi->editLink: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **linkId** | **String**| The id of the link to edit. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`. | 
- **workspaceId** | **String**| The ID of the workspace. | 
- **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
- **createLinkRequest** | [**CreateLinkRequest**](CreateLinkRequest.md)|  | [optional] 
-
-### Return type
-
-[**LinkSchema**](LinkSchema.md)
-
-### Authorization
-
-[token](../README.md#token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getLinkInfo**
-> LinkSchema getLinkInfo(workspaceId, domain, key, projectSlug)
+> LinkSchema getLinkInfo(workspaceId, projectSlug, domain, key, linkId, externalId)
 
 Retrieve a link
 
-Retrieve the info for a link from their domain and key.
+Retrieve the info for a link.
 
 ### Example
 ```dart
@@ -221,12 +173,14 @@ import 'package:dub/api.dart';
 
 final api = Dub().getLinksApi();
 final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
+final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
 final String domain = domain_example; // String | 
 final String key = key_example; // String | The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`.
-final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
+final String linkId = clux0rgak00011...; // String | The unique ID of the short link.
+final String externalId = ext_123456; // String | This is the ID of the link in the your database. Must be prefixed with `ext_` when passed as a query parameter.
 
 try {
-    final response = api.getLinkInfo(workspaceId, domain, key, projectSlug);
+    final response = api.getLinkInfo(workspaceId, projectSlug, domain, key, linkId, externalId);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling LinksApi->getLinkInfo: $e\n');
@@ -238,9 +192,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspaceId** | **String**| The ID of the workspace. | 
- **domain** | **String**|  | 
- **key** | **String**| The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`. | 
  **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
+ **domain** | **String**|  | [optional] 
+ **key** | **String**| The key of the link to retrieve. E.g. for `d.to/github`, the key is `github`. | [optional] 
+ **linkId** | **String**| The unique ID of the short link. | [optional] 
+ **externalId** | **String**| This is the ID of the link in the your database. Must be prefixed with `ext_` when passed as a query parameter. | [optional] 
 
 ### Return type
 
@@ -273,8 +229,8 @@ final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
 final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
 final String domain = domain_example; // String | The domain to filter the links by. E.g. `ac.me`. If not provided, all links for the workspace will be returned.
 final String tagId = tagId_example; // String | The tag ID to filter the links by. This field is deprecated – use `tagIds` instead.
-final List<String> tagIds = ; // List<String> | The tag IDs to filter the links by.
-final List<String> tagNames = ; // List<String> | The unique name of the tags assigned to the short link (case insensitive).
+final GetLinksTagIdsParameter tagIds = ; // GetLinksTagIdsParameter | The tag IDs to filter the links by.
+final GetLinksTagNamesParameter tagNames = ; // GetLinksTagNamesParameter | The unique name of the tags assigned to the short link (case insensitive).
 final String search = search_example; // String | The search term to filter the links by. The search term will be matched against the short link slug and the destination url.
 final String userId = userId_example; // String | The user ID to filter the links by.
 final bool showArchived = true; // bool | Whether to include archived links in the response. Defaults to `false` if not provided.
@@ -298,8 +254,8 @@ Name | Type | Description  | Notes
  **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
  **domain** | **String**| The domain to filter the links by. E.g. `ac.me`. If not provided, all links for the workspace will be returned. | [optional] 
  **tagId** | **String**| The tag ID to filter the links by. This field is deprecated – use `tagIds` instead. | [optional] 
- **tagIds** | [**List&lt;String&gt;**](String.md)| The tag IDs to filter the links by. | [optional] 
- **tagNames** | [**List&lt;String&gt;**](String.md)| The unique name of the tags assigned to the short link (case insensitive). | [optional] 
+ **tagIds** | [**GetLinksTagIdsParameter**](.md)| The tag IDs to filter the links by. | [optional] 
+ **tagNames** | [**GetLinksTagNamesParameter**](.md)| The unique name of the tags assigned to the short link (case insensitive). | [optional] 
  **search** | **String**| The search term to filter the links by. The search term will be matched against the short link slug and the destination url. | [optional] 
  **userId** | **String**| The user ID to filter the links by. | [optional] 
  **showArchived** | **bool**| Whether to include archived links in the response. Defaults to `false` if not provided. | [optional] [default to false]
@@ -338,13 +294,13 @@ final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
 final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
 final String domain = domain_example; // String | The domain to filter the links by. E.g. `ac.me`. If not provided, all links for the workspace will be returned.
 final String tagId = tagId_example; // String | The tag ID to filter the links by. This field is deprecated – use `tagIds` instead.
-final List<String> tagIds = ; // List<String> | The tag IDs to filter the links by.
-final List<String> tagNames = ; // List<String> | The unique name of the tags assigned to the short link (case insensitive).
+final GetLinksTagIdsParameter tagIds = ; // GetLinksTagIdsParameter | The tag IDs to filter the links by.
+final GetLinksTagNamesParameter tagNames = ; // GetLinksTagNamesParameter | The unique name of the tags assigned to the short link (case insensitive).
 final String search = search_example; // String | The search term to filter the links by. The search term will be matched against the short link slug and the destination url.
 final String userId = userId_example; // String | The user ID to filter the links by.
 final bool showArchived = true; // bool | Whether to include archived links in the response. Defaults to `false` if not provided.
 final bool withTags = true; // bool | Whether to include tags in the response. Defaults to `false` if not provided.
-final List<String> groupBy = ; // List<String> | The field to group the links by.
+final GetLinksCountGroupByParameter groupBy = ; // GetLinksCountGroupByParameter | The field to group the links by.
 
 try {
     final response = api.getLinksCount(workspaceId, projectSlug, domain, tagId, tagIds, tagNames, search, userId, showArchived, withTags, groupBy);
@@ -362,13 +318,13 @@ Name | Type | Description  | Notes
  **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
  **domain** | **String**| The domain to filter the links by. E.g. `ac.me`. If not provided, all links for the workspace will be returned. | [optional] 
  **tagId** | **String**| The tag ID to filter the links by. This field is deprecated – use `tagIds` instead. | [optional] 
- **tagIds** | [**List&lt;String&gt;**](String.md)| The tag IDs to filter the links by. | [optional] 
- **tagNames** | [**List&lt;String&gt;**](String.md)| The unique name of the tags assigned to the short link (case insensitive). | [optional] 
+ **tagIds** | [**GetLinksTagIdsParameter**](.md)| The tag IDs to filter the links by. | [optional] 
+ **tagNames** | [**GetLinksTagNamesParameter**](.md)| The unique name of the tags assigned to the short link (case insensitive). | [optional] 
  **search** | **String**| The search term to filter the links by. The search term will be matched against the short link slug and the destination url. | [optional] 
  **userId** | **String**| The user ID to filter the links by. | [optional] 
  **showArchived** | **bool**| Whether to include archived links in the response. Defaults to `false` if not provided. | [optional] [default to false]
  **withTags** | **bool**| Whether to include tags in the response. Defaults to `false` if not provided. | [optional] [default to false]
- **groupBy** | [**List&lt;String&gt;**](String.md)| The field to group the links by. | [optional] 
+ **groupBy** | [**GetLinksCountGroupByParameter**](.md)| The field to group the links by. | [optional] 
 
 ### Return type
 
@@ -381,6 +337,102 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateLink**
+> LinkSchema updateLink(linkId, workspaceId, projectSlug, createLinkRequest)
+
+Update a link
+
+Update a link for the authenticated workspace. If there's no change, returns it as it is.
+
+### Example
+```dart
+import 'package:dub/api.dart';
+
+final api = Dub().getLinksApi();
+final String linkId = linkId_example; // String | The id of the link to update. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`.
+final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
+final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
+final CreateLinkRequest createLinkRequest = ; // CreateLinkRequest | 
+
+try {
+    final response = api.updateLink(linkId, workspaceId, projectSlug, createLinkRequest);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling LinksApi->updateLink: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **linkId** | **String**| The id of the link to update. You may use either `linkId` (obtained via `/links/info` endpoint) or `externalId` prefixed with `ext_`. | 
+ **workspaceId** | **String**| The ID of the workspace. | 
+ **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
+ **createLinkRequest** | [**CreateLinkRequest**](CreateLinkRequest.md)|  | [optional] 
+
+### Return type
+
+[**LinkSchema**](LinkSchema.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upsertLink**
+> LinkSchema upsertLink(workspaceId, projectSlug, createLinkRequest)
+
+Upsert a link
+
+Upsert a link for the authenticated workspace by its URL. If a link with the same URL already exists, return it (or update it if there are any changes). Otherwise, a new link will be created.
+
+### Example
+```dart
+import 'package:dub/api.dart';
+
+final api = Dub().getLinksApi();
+final String workspaceId = ws_cluuwcv0r...; // String | The ID of the workspace.
+final String projectSlug = projectSlug_example; // String | The slug of the project. This field is deprecated – use `workspaceId` instead.
+final CreateLinkRequest createLinkRequest = ; // CreateLinkRequest | 
+
+try {
+    final response = api.upsertLink(workspaceId, projectSlug, createLinkRequest);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling LinksApi->upsertLink: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceId** | **String**| The ID of the workspace. | 
+ **projectSlug** | **String**| The slug of the project. This field is deprecated – use `workspaceId` instead. | [optional] 
+ **createLinkRequest** | [**CreateLinkRequest**](CreateLinkRequest.md)|  | [optional] 
+
+### Return type
+
+[**LinkSchema**](LinkSchema.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

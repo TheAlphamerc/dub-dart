@@ -13,8 +13,9 @@ Name | Type | Description | Notes
 **key** | **String** | The short link slug. If not provided, a random 7-character slug will be generated. | 
 **externalId** | **String** | This is the ID of the link in your database. If set, it can be used to identify the link in the future. Must be prefixed with 'ext_' when passed as a query parameter. | 
 **url** | **String** | The destination URL of the short link. | 
+**trackConversion** | **bool** | [BETA] Whether to track conversions for the short link. | [default to false]
 **archived** | **bool** | Whether the short link is archived. | [default to false]
-**expiresAt** | [**DateTime**](DateTime.md) | The date and time when the short link will expire in ISO-8601 format. | 
+**expiresAt** | **String** | The date and time when the short link will expire in ISO-8601 format. | 
 **expiredUrl** | **String** | The URL to redirect to when the short link has expired. | 
 **password** | **String** | The password required to access the destination URL of the short link. | 
 **proxy** | **bool** | Whether the short link uses Custom Social Media Cards feature. | [default to false]
@@ -40,6 +41,8 @@ Name | Type | Description | Notes
 **workspaceId** | **String** | The workspace ID of the short link. | 
 **clicks** | **num** | The number of clicks on the short link. | [default to 0]
 **lastClicked** | **String** | The date and time when the short link was last clicked. | 
+**leads** | **num** | [BETA]: The number of leads the short links has generated. | [default to 0]
+**sales** | **num** | [BETA]: The number of sales the short links has generated. | [default to 0]
 **createdAt** | **String** | The date and time when the short link was created. | 
 **updatedAt** | **String** | The date and time when the short link was last updated. | 
 **projectId** | **String** | The project ID of the short link. This field is deprecated – use `workspaceId` instead. | 

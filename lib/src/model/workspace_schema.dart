@@ -48,6 +48,8 @@ class WorkspaceSchema {
 
     required  this.billingCycleStart,
 
+    required  this.stripeConnectId,
+
     required  this.createdAt,
 
     required  this.users,
@@ -55,6 +57,8 @@ class WorkspaceSchema {
     required  this.domains,
 
     required  this.inviteCode,
+
+     this.betaTester,
   });
 
       /// The unique ID of the workspace.
@@ -239,6 +243,19 @@ class WorkspaceSchema {
 
 
 
+      /// [BETA]: The Stripe Connect ID of the workspace.
+  @JsonKey(
+    
+    name: r'stripeConnectId',
+    required: true,
+    includeIfNull: true
+  )
+
+
+  final String? stripeConnectId;
+
+
+
       /// The date and time when the workspace was created.
   @JsonKey(
     
@@ -291,6 +308,19 @@ class WorkspaceSchema {
 
 
 
+      /// Whether the workspace is enrolled in the beta testing program.
+  @JsonKey(
+    
+    name: r'betaTester',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? betaTester;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is WorkspaceSchema &&
      other.id == id &&
@@ -307,10 +337,12 @@ class WorkspaceSchema {
      other.plan == plan &&
      other.stripeId == stripeId &&
      other.billingCycleStart == billingCycleStart &&
+     other.stripeConnectId == stripeConnectId &&
      other.createdAt == createdAt &&
      other.users == users &&
      other.domains == domains &&
-     other.inviteCode == inviteCode;
+     other.inviteCode == inviteCode &&
+     other.betaTester == betaTester;
 
   @override
   int get hashCode =>
@@ -328,10 +360,12 @@ class WorkspaceSchema {
     plan.hashCode +
     (stripeId == null ? 0 : stripeId.hashCode) +
     billingCycleStart.hashCode +
+    (stripeConnectId == null ? 0 : stripeConnectId.hashCode) +
     createdAt.hashCode +
     users.hashCode +
     domains.hashCode +
-    (inviteCode == null ? 0 : inviteCode.hashCode);
+    (inviteCode == null ? 0 : inviteCode.hashCode) +
+    betaTester.hashCode;
 
   factory WorkspaceSchema.fromJson(Map<String, dynamic> json) => _$WorkspaceSchemaFromJson(json);
 

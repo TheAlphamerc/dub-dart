@@ -22,10 +22,12 @@ Name | Type | Description | Notes
 **plan** | **String** | The plan of the workspace. | 
 **stripeId** | **String** | The Stripe ID of the workspace. | 
 **billingCycleStart** | **num** | The date and time when the billing cycle starts for the workspace. | 
+**stripeConnectId** | **String** | [BETA]: The Stripe Connect ID of the workspace. | 
 **createdAt** | **String** | The date and time when the workspace was created. | 
 **users** | [**List&lt;WorkspaceSchemaUsersInner&gt;**](WorkspaceSchemaUsersInner.md) | The role of the authenticated user in the workspace. | 
 **domains** | [**List&lt;WorkspaceSchemaDomainsInner&gt;**](WorkspaceSchemaDomainsInner.md) | The domains of the workspace. | 
 **inviteCode** | **String** | The invite code of the workspace. | 
+**betaTester** | **bool** | Whether the workspace is enrolled in the beta testing program. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
