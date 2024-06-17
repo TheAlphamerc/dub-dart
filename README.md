@@ -18,7 +18,7 @@ To use the package from [pub.dev](https://pub.dev), please include the following
 
 ```yaml
 dependencies:
-  dub: 0.0.1
+  dub: 0.0.3
 ```
 
 ### Github
